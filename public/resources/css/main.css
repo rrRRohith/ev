@@ -1,0 +1,192 @@
+:root {
+    --app-font: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--app-font);
+}
+
+.modal-dialog.modal-xm {
+    max-width: 400px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+main.main-wrapper {
+    min-height: 100vh;
+}
+
+input.form-control:focus,
+select.form-control:focus,
+textarea.form-control:focus {
+    border-bottom: 2px solid var(--bs-primary) !important;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: none;
+    overflow: hidden;
+}
+
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+}
+
+.lds-ellipsis div {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+.c-toast .swal2-toast {
+    padding: 10px !important;
+}
+
+.swal2-popup.swal2-toast .swal2-title,
+.c-toast .APIerrors {
+    margin: 0.25em .5em !important;
+}
+
+.c-toast div#swal2-html-container {
+    margin: 0 !important;
+}
+
+.c-toast .APIerrors {
+    margin: 0.5em 1em;
+}
+
+.c-toast .APIerrors:empty {
+    display: none;
+}
+
+.swal2-container.c-toast {
+    max-width: 660px !important;
+    /* width: 100% !important; */
+    min-width: 300px;
+    width: fit-content !important;
+}
+
+.swal2-container.c-toast #swal2-title {
+    font-weight: 500;
+}
+
+.c-toast.error .swal2-toast {
+    background: var(--bs-danger) !important;
+    color: #fff;
+}
+
+.c-toast.success .swal2-toast {
+    background: var(--bs-success) !important;
+    color: #fff;
+}
+
+.c-toast.warning .swal2-toast {
+    background: var(--bs-warning) !important;
+    color: #fff;
+}
+
+.c-toast button.swal2-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+
+.form-group.error::after {
+    content: attr(data-error);
+    font-size: small;
+    color: var(--bs-danger);
+    display: block;
+}
+
+input.form-control,
+select.form-control,
+textarea.form-control {
+    transition: all .1s ease;
+    border-bottom-width: 2px;
+}
+
+.form-group.error input.form-control,
+.form-group.error textarea.form-control,
+.form-group.error select.form-control {
+    border-bottom: 2px solid var(--bs-danger) !important;
+}
+
+.APIerrors p {
+    margin-bottom: 0px;
+}
+
+a.dropdown-item.selected {
+    background: var(--bs-primary);
+    color: var(--bs-white);
+}
+
+tr td {
+    vertical-align: middle;
+}

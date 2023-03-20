@@ -1,6 +1,6 @@
-<div class="modal fade loginModal auth-modal" data-bs-backdrop="static" data-bs-keyboard="false" id="loginModal" tabindex="-1"
-    role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xm" role="document">
+<div class="modal loginModal auth-modal" data-bs-backdrop="static" data-bs-keyboard="false" id="loginModal"
+    tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xm modal-fullscreen-md-down" role="document">
         <div class="modal-content border-0">
             <div class="modal-header border-0">
                 <div>
@@ -41,9 +41,9 @@
         </div>
     </div>
 </div>
-<div class="modal fade registerModal auth-modal" data-bs-backdrop="static" data-bs-keyboard="false" id="registerModal"
+<div class="modal registerModal auth-modal" data-bs-backdrop="static" data-bs-keyboard="false" id="registerModal"
     tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xm" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xm modal-fullscreen-md-down" role="document">
         <div class="modal-content border-0">
             <div class="modal-header border-0">
                 <div>

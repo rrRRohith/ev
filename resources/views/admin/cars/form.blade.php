@@ -1,6 +1,6 @@
-<div class="modal fade carModal" data-bs-backdrop="static" data-bs-keyboard="false" id="carModal" tabindex="-1"
+<div class="modal carModal" data-bs-backdrop="static" data-bs-keyboard="false" id="carModal" tabindex="-1"
     role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-md modal-fullscreen-md-down" role="document">
         <div class="modal-content border-0">
             <div class="modal-header border-0">
                 <div>
@@ -26,7 +26,7 @@
                                 <input hidden type="hidden" form="carForm" name="image" id="image">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="make" class="fw-semibold">Make</label>
                                 <input type="text" form="carForm" name="make" id="make"
@@ -34,7 +34,7 @@
                                     class='form-control shadow-none border-gray rounded-1 p-2 pl-3 pr-3 ps-3 pe-3 hover-shadow'>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="name" class="fw-semibold">Model name</label>
                                 <input type="text" form="carForm" name="name" id="name"
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="trim" class="fw-semibold">Trim</label>
                                 <input type="text" form="carForm" name="trim" id="trim"
@@ -52,7 +52,7 @@
                                     class='form-control shadow-none border-gray rounded-1 p-2 pl-3 pr-3 ps-3 pe-3 hover-shadow'>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="charger_type" class="fw-semibold">Charger type</label>
                                 <input type="text" form="carForm" name="charger_type" id="charger_type"
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="drive_range" class="fw-semibold">Range <small class="fw-normal">In
                                         kms</small></label>
@@ -71,7 +71,7 @@
                                     class='form-control shadow-none border-gray rounded-1 p-2 pl-3 pr-3 ps-3 pe-3 hover-shadow'>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="charging_time" class="fw-semibold">Time <small class="fw-normal">In
                                         m</small></label>
@@ -112,7 +112,8 @@
             $('.create-model').on('click', function() {
                 $('#carForm').trigger('reset');
                 $('.form-group').removeClass('error');
-                $('.modal-title').text($('.modal-title').attr('data-store'));
+                $('.carModal').find('.modal-title').text($('.carModal').find('.modal-title').attr('data-store'));
+                
                 $('#carForm').attr('action', $('#carForm').attr('data-store'));
                 $('input[name="_method"]').val('POST');
                 $('.image').attr('src', $('.image').attr('data-default'));
@@ -122,12 +123,13 @@
                 $('#carForm').trigger('reset');
                 $('.form-group').removeClass('error');
                 let car = await JSON.parse($(this).attr('data-item'));
-                $('.modal-title').text($('.modal-title').attr('data-update'));
+                $('.carModal').find('.modal-title').text($('.carModal').find('.modal-title').attr('data-update'));
+                
                 $('#carForm').attr('action', $('#carForm').attr('data-update').replace('carID', car
                     .id));
                 $('input[name="_method"]').val('PUT');
                 $('.modal-body').append(
-                    `<a href="${$('#carForm').attr('data-destroy').replace('carID', car.id)}" data-method="delete" class="destroy text-danger text-decoration-none fw-semibold">Delete model</a>`
+                    `<a href="${$('#carForm').attr('data-destroy').replace('carID', car.id)}" data-confirm="Are you sure want to delete?" data-method="delete" class="destroy text-danger text-decoration-none fw-semibold">Delete model</a>`
                 )
                 $('input#make').val(car.make);
                 $('input#name').val(car.name);

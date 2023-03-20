@@ -16,5 +16,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::name('auth.')->prefix('/auth')->group(function () {
     Route::post('/login',  'App\Http\Controllers\AuthController@login')->name('login');
+    Route::post('/register',  'App\Http\Controllers\AuthController@register')->name('register');
     Route::post('/logout',  'App\Http\Controllers\AuthController@logout')->name('logout');
 });
+Route::name('map.')->prefix('/map')->middleware(['auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\MapController::class, 'index'])->name('index');
+});
+

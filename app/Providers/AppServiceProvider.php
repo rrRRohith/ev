@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider{
         view()->share('request', request());
         view()->share('app', json_decode(json_encode([
             'name' => env('APP_NAME'),
+            'map_key' => env('MAP_KEY')
         ])));
     }
 }

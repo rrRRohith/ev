@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\{LoginRequest, RegisterRequest};
 use App\Providers\RouteServiceProvider;
+use App\Models\User;
 
 class AuthController extends Controller{
 
@@ -33,6 +34,27 @@ class AuthController extends Controller{
             'message' => __('Login success.'),
             'redirect' => $this->redirectTo,
         ]);
+    }
+
+    /**
+     * Register user
+     * @param  RegisterRequest $request
+     * @return Response
+     */
+    public function register(RegisterRequest $request){
+        try{
+            $user = User::create($request->only(['name','email', 'password']));
+            \Auth::login($user);
+            return !$request->ajax() ? redirect($this->redirectTo) : response()->json([
+                'success' => true,
+                'message' => __('Register success.'),
+                'redirect' => $this->redirectTo,
+            ]);
+        }
+        catch(\Exception $e){
+            return $this->error($e);
+        }
+        
     }
 
     /**

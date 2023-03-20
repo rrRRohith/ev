@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class StationController extends Controller{
     use \App\Services\Upload;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(){
+        parent::__construct();
+    }
+    
     /**
      * @param  Request $request
      * Display a listing of the resource.

@@ -3,6 +3,7 @@
  */
 $(document).ready(function () {
     $.ajaxSetup({ cache: false });
+    toolTip();
 });
 /**
  * Pop global login form

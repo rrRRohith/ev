@@ -2,7 +2,7 @@
 @section('content')
 @include('web.layouts.header')
 <main class="main-wrapper">
-    <div class="container py-5">
+    <div class="container-fluid p-0">
         @yield('contents')
     </div>
 </main>

@@ -1,6 +1,6 @@
-<div class="modal fade stationModal" data-bs-backdrop="static" data-bs-keyboard="false" id="stationModal" tabindex="-1"
+<div class="modal stationModal" data-bs-backdrop="static" data-bs-keyboard="false" id="stationModal" tabindex="-1"
     role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-md modal-fullscreen-md-down" role="document">
         <div class="modal-content border-0">
             <div class="modal-header border-0">
                 <div>
@@ -20,13 +20,13 @@
                         <div class="col-12 m-auto text-center">
                             <div class="form-group mb-2">
                                 <label for="imageUpload" class="cursor-pointer">
-                                    <img width="140" height="140" src="{{ asset('uploads/default.png') }}" class="image w-100 border border-3 border-primary rounded-circle object-fit-cover" data-default="{{ asset('uploads/default.png') }}" alt="">
+                                    <img width="140" height="140" src="{{ asset('uploads/default.png') }}" class="image border border-3 border-primary rounded-circle object-fit-cover" data-default="{{ asset('uploads/default.png') }}" alt="">
                                     <input hidden type="file" id="imageUpload" accept="image/*">
                                 </label>
                                 <input hidden type="hidden" form="stationForm" name="image" id="image">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="name" class="fw-semibold">Name</label>
                                 <input type="text" form="stationForm" name="name" id="name"
@@ -34,7 +34,7 @@
                                     class='form-control shadow-none border-gray rounded-1 p-2 pl-3 pr-3 ps-3 pe-3 hover-shadow'>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="charger_type" class="fw-semibold">Charger type</label>
                                 <input type="text" form="stationForm" name="charger_type" id="charger_type"
@@ -52,7 +52,7 @@
                                     class='form-control shadow-none border-gray rounded-1 p-2 pl-3 pr-3 ps-3 pe-3 hover-shadow'>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="latitude" class="fw-semibold">Latitude</label>
                                 <input type="text" form="stationForm" name="latitude" id="latitude"
@@ -60,7 +60,7 @@
                                     class='form-control shadow-none border-gray rounded-1 p-2 pl-3 pr-3 ps-3 pe-3 hover-shadow'>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-group mb-2">
                                 <label for="longitude" class="fw-semibold">Longitude</label>
                                 <input type="text" form="stationForm" name="longitude" id="longitude"
@@ -119,7 +119,7 @@
             $('.create-station').on('click', function() {
                 $('#stationForm').trigger('reset');
                 $('.form-group').removeClass('error');
-                $('.modal-title').text($('.modal-title').attr('data-store'));
+                $('.stationModal').find('.modal-title').text($('.stationModal').find('.modal-title').attr('data-store'));
                 $('#stationForm').attr('action', $('#stationForm').attr('data-store'));
                 $('input[name="_method"]').val('POST');
                 $('.image').attr('src', $('.image').attr('data-default'));
@@ -129,12 +129,12 @@
                 $('#stationForm').trigger('reset');
                 $('.form-group').removeClass('error');
                 let station = await JSON.parse($(this).attr('data-item'));
-                $('.modal-title').text($('.modal-title').attr('data-update'));
+                $('.stationModal').find('.modal-title').text($('.stationModal').find('.modal-title').attr('data-update'));
                 $('#stationForm').attr('action', $('#stationForm').attr('data-update').replace(
                     'stationID', station.id));
                 $('input[name="_method"]').val('PUT');
                 $('.modal-body').append(
-                    `<a href="${$('#stationForm').attr('data-destroy').replace('stationID', station.id)}" data-method="delete" class="destroy text-danger text-decoration-none fw-semibold">Delete station</a>`
+                    `<a href="${$('#stationForm').attr('data-destroy').replace('stationID', station.id)}" data-method="delete" class="destroy text-danger text-decoration-none fw-semibold" data-confirm="Are you sure want to delete?">Delete station</a>`
                     )
                 $('input#address').val(station.address);
                 $('input#name').val(station.name);

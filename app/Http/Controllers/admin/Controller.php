@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 
 class Controller extends BaseController{
+    protected $user;
     /**
      * Create a new controller instance.
      *
@@ -13,6 +14,10 @@ class Controller extends BaseController{
      */
     public function __construct(){
         parent::__construct();
+        $this->middleware(function ($request, $next) {
+			$this->user = \Auth::user();
+            return $next($request);
+        });
     }
 
     /**

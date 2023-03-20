@@ -15,7 +15,11 @@ body {
 }
 
 main.main-wrapper {
-    min-height: 100vh;
+    min-height: calc(100vh - 64px);
+}
+
+.map-section {
+    min-height: calc(100vh - 120px);
 }
 
 input.form-control:focus,
@@ -189,4 +193,55 @@ a.dropdown-item.selected {
 
 tr td {
     vertical-align: middle;
+}
+
+main.main-wrapper {
+    padding-top: 64px;
+}
+
+.position-absolute.planner {
+    z-index: 99;
+    top: 1em;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.menu-tooltip .tooltip-inner {
+    font-weight: 500;
+    padding: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.sidePanel .menus i {
+    min-width: 21px;
+}
+
+.form-icon i {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translate(0%, -50%);
+    color: var(--bs-gray);
+    font-size: larger;
+}
+
+.hover-shadow:focus,
+.hover-shadow:active {
+    border-color: #68686882 !important;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0.125rem 0.75rem rgb(0 0 0 / 8%) !important;
+    border-color: #8b8b8b82 !important;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, .075) !important;
+}
+.z-100 {
+    z-index: 100;
+}
+.z-50 {
+    z-index: 50;
 }

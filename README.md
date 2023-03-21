@@ -12,6 +12,8 @@ To run this project, you will need to add the following environment variables to
 `DB_PASSWORD`
 `MAP_KEY`
 
+Note that the route planner feature will not work unless the google map key provided has enabled billing.
+
 ## Installation
 
 Clone EV route planner
@@ -41,7 +43,7 @@ Run migration
 Run seeder
 
 ``` 
-  php artisan db:seed --class=UserSeeder
+  php artisan db:seed --class=AdminSeeder
 ```
 
 Start application

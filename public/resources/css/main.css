@@ -2,7 +2,8 @@
     --app-font: 'Montserrat', sans-serif;
 }
 
-body {
+body,
+.pac-container {
     font-family: var(--app-font);
 }
 
@@ -239,9 +240,138 @@ main.main-wrapper {
 .hover-shadow:hover {
     box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, .075) !important;
 }
+
 .z-100 {
     z-index: 100;
 }
+
 .z-50 {
     z-index: 50;
+}
+
+.position-absolute.planner {
+    min-width: max-content;
+}
+
+.modal-body .station {
+    margin: -1em;
+}
+
+.modal-body .station img {
+    max-height: 100px;
+    object-fit: cover;
+}
+
+.map-container .stationPop {
+    max-width: 240px !important;
+    min-width: 240px !important;
+}
+
+.map-container .stationPop img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.map-container .gm-style-iw-d,
+.map-container .gm-style-iw.gm-style-iw-c {
+    padding: 0px !important;
+    overflow: hidden !important;
+}
+
+.startCurrentLocation {
+    width: fit-content;
+}
+
+.planned .plan-new {
+    display: none !important;
+}
+
+.plan-close {
+    display: none;
+}
+
+.planned .plan-close {
+    display: block !important;
+}
+
+.pac-container {
+    z-index: 999999;
+}
+
+.pac-container {
+    border: none !important;
+    box-shadow: none;
+}
+
+span.pac-icon.pac-icon-marker {
+    display: none !important;
+}
+
+.pac-item * {
+    font-size: 18px;
+}
+
+.pac-item {
+    border: none !important;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.startCurrentLocation.position-absolute {
+    top: 50%;
+    right: 0px;
+    transform: translate(-50%, -50%);
+    font-size: larger;
+}
+
+.direction-info {
+    position: absolute;
+    z-index: 99;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: max-content;
+}
+
+.direction-info i.fa-xmark {
+    cursor: pointer;
+    position: absolute;
+    right: -1em;
+    top: -1em;
+    font-size: larger;
+    color: var(--bs-danger);
+}
+
+nav#mainHeader {
+    min-height: 64px;
+}
+
+.form-check-lg input {
+    border: none !important;
+    background-color: #e7e7e7;
+}
+
+.form-check-lg input {
+    zoom: 1.4;
+}
+
+.form-check.form-check-lg {
+    display: flex;
+    align-items: center;
+}
+
+.selectEV:hover {
+    filter: opacity(0.75);
+}
+
+.direction-info {
+    position: absolute;
+    z-index: 99;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: max-content;
+    max-width: 80%;
 }

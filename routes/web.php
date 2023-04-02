@@ -21,5 +21,7 @@ Route::name('auth.')->prefix('/auth')->group(function () {
 });
 Route::name('map.')->prefix('/map')->middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\MapController::class, 'index'])->name('index');
+    Route::post('/stations', [App\Http\Controllers\MapController::class, 'stations'])->name('stations');
+    Route::get('/models', [App\Http\Controllers\MapController::class, 'models'])->name('models');
 });
 

@@ -21,7 +21,7 @@
                             @guest
                                 <li><a class="dropdown-item p-2 rounded-1 login" href="#">Login</a></li>
                             @else
-                                <li><a class="dropdown-item p-2 rounded-1 routes" href="#" data-bs-toggle="modal" data-bs-target="#savedModal">Saved routes</a></li>
+                                <li><a class="dropdown-item p-2 rounded-1 d-none" href="#" data-bs-toggle="modal" data-bs-target="#savedModal">Saved routes</a></li>
                                 <li><a class="dropdown-item p-2 rounded-1" data-method="post"
                                         href="{{ route('auth.logout') }}" data-confirm="Are you sure want to logout?">Logout</a></li>
                                 @endif

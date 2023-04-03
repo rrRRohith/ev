@@ -9,9 +9,9 @@
         <a class="btn btn-primary border-0 shadow-none ms-auto create-model mb-3 mb-sm-0" data-bs-toggle="modal" data-bs-target="#carModal">Add a EV model</a>
     </div>
 </section>
-@endsection
 @include('admin.cars.form')
 @include('admin.stations.form')
+@endsection
 @push('styles')
 @endpush
 @push('scripts')

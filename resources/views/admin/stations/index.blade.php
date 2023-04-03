@@ -10,9 +10,9 @@
                   Options
                 </button>
                 <ul class="dropdown-menu border-0 p-0 shadow-sm">
-                  <li><a class="dropdown-item rounded-1" href="#">Export stations</a></li>
+                  <li><a class="dropdown-item rounded-1" data-method="post" href="{{ route('admin.stations.export') }}">Export stations</a></li>
                   <li><a class="dropdown-item rounded-1" href="#">Import stations</a></li>
-                  <li><a class="dropdown-item rounded-1" href="#">Import format</a></li>
+                  <li><a class="dropdown-item rounded-1" href="{{ asset('uploads/stations_example.xlsx') }}" download>Import format</a></li>
                 </ul>
               </div>
               <a class="btn btn-primary border-0 shadow-none create-station" data-bs-toggle="modal" data-bs-target="#stationModal">Add a station</a>

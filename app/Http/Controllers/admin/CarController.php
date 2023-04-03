@@ -7,6 +7,8 @@ use App\Models\Car;
 use Illuminate\Http\Request;
 use App\Http\Requests\admin\CarRequest;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Car as export_Car;
 
 class CarController extends Controller{
     use \App\Services\Upload;
@@ -84,5 +86,14 @@ class CarController extends Controller{
         catch(\Exception $e){
             return $this->error($e);
         }
+    }
+
+    /**
+     * Export the resource to spreadsheet
+     * 
+     * @param  Request $request
+     */
+    public function export(Request $request){
+        return Excel::download(new export_Car(Car::all()), "models.xlsx");
     }
 }

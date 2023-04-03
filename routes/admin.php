@@ -19,7 +19,11 @@ Route::resource('/cars', App\Http\Controllers\admin\CarController::class, [
     'only' => ['index', 'store', 'update', 'destroy']
 ]);
 
+Route::post('/cars/export', [App\Http\Controllers\Admin\CarController::class, 'export'])->name('cars.export');
+
 Route::resource('/stations', App\Http\Controllers\admin\StationController::class, [
     'only' => ['index', 'store', 'update', 'destroy']
 ]);
+
+Route::post('/stations/export', [App\Http\Controllers\admin\StationController::class, 'export'])->name('stations.export');
 

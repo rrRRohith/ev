@@ -7,6 +7,8 @@ use App\Models\Station;
 use Illuminate\Http\Request;
 use App\Http\Requests\admin\StationRequest;
 use Illuminate\Support\Facades\DB;
+use App\Exports\Station as export_Station;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StationController extends Controller{
     use \App\Services\Upload;
@@ -83,5 +85,14 @@ class StationController extends Controller{
         catch(\Exception $e){
             return $this->error($e);
         }
+    }
+
+    /**
+     * Export the resource to spreadsheet
+     * 
+     * @param  Request $request
+     */
+    public function export(Request $request){
+        return Excel::download(new export_Station(Station::all()), "stations.xlsx");
     }
 }

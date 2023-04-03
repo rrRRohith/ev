@@ -10,9 +10,9 @@
                   Options
                 </button>
                 <ul class="dropdown-menu border-0 p-0 shadow-sm">
-                  <li><a class="dropdown-item rounded-1" href="#">Export models</a></li>
+                  <li><a class="dropdown-item rounded-1" data-method="post" href="{{ route('admin.cars.export') }}">Export models</a></li>
                   <li><a class="dropdown-item rounded-1" href="#">Import models</a></li>
-                  <li><a class="dropdown-item rounded-1" href="#">Import format</a></li>
+                  <li><a class="dropdown-item rounded-1" href="{{ asset('uploads/models_example.xlsx') }}" download>Import format</a></li>
                 </ul>
               </div>
               <a class="btn btn-primary border-0 shadow-none create-model" data-bs-toggle="modal" data-bs-target="#carModal">Add a EV model</a>

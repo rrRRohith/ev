@@ -133,6 +133,7 @@
                 $('#stationForm').attr('action', $('#stationForm').attr('data-update').replace(
                     'stationID', station.id));
                 $('input[name="_method"]').val('PUT');
+                $('a.destroy').remove();
                 $('.modal-body').append(
                     `<a href="${$('#stationForm').attr('data-destroy').replace('stationID', station.id)}" data-method="delete" class="destroy text-danger text-decoration-none fw-semibold" data-confirm="Are you sure want to delete?">Delete station</a>`
                     )

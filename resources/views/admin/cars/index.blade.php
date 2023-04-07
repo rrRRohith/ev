@@ -11,7 +11,7 @@
                 </button>
                 <ul class="dropdown-menu border-0 p-0 shadow-sm">
                   <li><a class="dropdown-item rounded-1" data-method="post" href="{{ route('admin.cars.export') }}">Export models</a></li>
-                  <li><a class="dropdown-item rounded-1" href="#">Import models</a></li>
+                  <li><label for="file" class="dropdown-item rounded-1 cursor-pointer">Import models</label>
                   <li><a class="dropdown-item rounded-1" href="{{ asset('uploads/models_example.xlsx') }}" download>Import format</a></li>
                 </ul>
               </div>
@@ -21,13 +21,19 @@
     <div class="mt-5">
         @include('admin.cars.table')
     </div>
-</section>
-@include('admin.cars.form')
-@endsection
-@push('styles')
-@endpush
-@push('scripts')
-<script>
-
-</script>
-@endpush
+  </section>
+  <form action="{{ route('admin.cars.import') }}" method="post" class="ajax" id="importForm" enctype="multipart/form-data">
+      @csrf
+      <input hidden type="file" name="file" id="file">
+  </form>
+  @include('admin.cars.form')
+  @endsection
+  @push('styles')
+  @endpush
+  @push('scripts')
+  <script>
+      $('#file').on('change', function() {
+          $('#importForm').submit();
+      })
+  </script>
+  @endpush

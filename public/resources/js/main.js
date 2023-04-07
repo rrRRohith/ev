@@ -25,7 +25,10 @@ $('document').ready(function () {
             await $.ajax({
                 type: $form.attr('method'),
                 url: $form.attr('action'),
-                data: $form.serialize(),
+                //data: $form.serialize(),
+                data: new FormData( this ),
+                processData: false,
+                contentType: false,
                 success: function (data) {
                     if (data.success) {
                         if ($form.attr('data-callback'))

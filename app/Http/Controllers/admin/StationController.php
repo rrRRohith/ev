@@ -6,9 +6,11 @@ use App\Http\Controllers\admin\Controller;
 use App\Models\Station;
 use Illuminate\Http\Request;
 use App\Http\Requests\admin\StationRequest;
+use App\Http\Requests\admin\ImportRequest;
 use Illuminate\Support\Facades\DB;
 use App\Exports\Station as export_Station;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\Station as import_Station;
 
 class StationController extends Controller{
     use \App\Services\Upload;
@@ -83,6 +85,28 @@ class StationController extends Controller{
             return redirect()->back()->withSuccess(__('Station deleted successully.'));
         }
         catch(\Exception $e){
+            return $this->error($e);
+        }
+    }
+
+    /**
+     * Import the resource to storage
+     * 
+     * @param  Request $request
+     */
+    public function import(ImportRequest $request){
+        DB::beginTransaction();
+        try{
+            Excel::import(new import_Station, $request->file('file')->store('temp'));
+            DB::commit();
+            return $request->ajax() ? response()->json([
+                'success' => true,
+                'message' => __('Stations imported successully.'),
+                'redirect' => route('admin.stations.index'),
+            ]) : redirect()->route('admin.stations.index')->withSuccess(__('Stations imported successully.'));
+        }
+        catch(\Exception $e){
+            DB::rollBack();
             return $this->error($e);
         }
     }

@@ -128,6 +128,7 @@
                 $('#carForm').attr('action', $('#carForm').attr('data-update').replace('carID', car
                     .id));
                 $('input[name="_method"]').val('PUT');
+                $('a.destroy').remove();
                 $('.modal-body').append(
                     `<a href="${$('#carForm').attr('data-destroy').replace('carID', car.id)}" data-confirm="Are you sure want to delete?" data-method="delete" class="destroy text-danger text-decoration-none fw-semibold">Delete model</a>`
                 )

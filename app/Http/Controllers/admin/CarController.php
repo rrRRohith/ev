@@ -9,6 +9,8 @@ use App\Http\Requests\admin\CarRequest;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Car as export_Car;
+use App\Http\Requests\admin\ImportRequest;
+use App\Imports\Car as import_Car;
 
 class CarController extends Controller{
     use \App\Services\Upload;
@@ -84,6 +86,28 @@ class CarController extends Controller{
             return redirect()->back()->withSuccess(__('Model deleted successully.'));
         }
         catch(\Exception $e){
+            return $this->error($e);
+        }
+    }
+
+    /**
+     * Import the resource to storage
+     * 
+     * @param  Request $request
+     */
+    public function import(ImportRequest $request){
+        DB::beginTransaction();
+        try{
+            Excel::import(new import_Car, $request->file('file')->store('temp'));
+            DB::commit();
+            return $request->ajax() ? response()->json([
+                'success' => true,
+                'message' => __('Model imported successully.'),
+                'redirect' => route('admin.cars.index'),
+            ]) : redirect()->route('admin.cars.index')->withSuccess(__('Model imported successully.'));
+        }
+        catch(\Exception $e){
+            DB::rollBack();
             return $this->error($e);
         }
     }
